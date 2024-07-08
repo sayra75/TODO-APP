@@ -13,13 +13,8 @@ const mystylefor = {
 function Create() {
   const [initialtext, settext] = useState("");
   const [todos, settodos] = useState([]);
-  const [edit, setedit] = useState("");
- function setedittext(e,index){
-  setedit(e.target.value)
-  const newtodo=[...todos]
-  newtodo[index]= e.target.value;
-  settodos(newtodo);
- }
+
+
   function handlestrike(e) {
     let id = e.target.name;
     let newtodos = [...todos];
@@ -53,8 +48,14 @@ function Create() {
     newtodos.splice(index, 1);
     settodos(newtodos);
   };
-  const handlesave=(index)=>{
-     const newtodo=[...todos];
+  const handlesave=(index,edit)=>{
+   
+    let newtodos = [...todos];
+    newtodos[index].initialtext=edit;
+ newtodos[index].isedit = !newtodos[index].isedit;
+
+    settodos(newtodos);
+
    
   }
   
@@ -89,7 +90,7 @@ function Create() {
             <div className="content">
               {todos.map((item, index) => {
                 return (
-                  <Todoslist
+                  <Todoslist 
                     handledelete={handledelete}
                     item={item}
                     index={index}
@@ -101,8 +102,7 @@ function Create() {
                     handleedit={handleedit}
                     isedit={item.isedit}
                     handlesave={handlesave}
-                     setedittext={setedittext}
-                     edit={item.edit}
+                    
                   />
                 );
               })}

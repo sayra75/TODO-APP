@@ -10,8 +10,8 @@ return  props.isedit ? (
      complete={props.complete}
      changetext={props.changetext}
      mystyle={props.mystyle}
-     seteditext={props.seteditext}
-     edit={props.edit}/>
+     initialtext={props.initialtext}
+    />
   ) :
     (
   
@@ -27,16 +27,14 @@ return  props.isedit ? (
         className="check"
       />
 
-      <div style={props.complete ? props.mystyle : {}}> {props.initial} </div>
+      <div style={props.complete ? props.mystyle : {}} className="task"> {props.initial} </div>
 
       <div className="b1">
         <button 
            value={props.isedit}
           className="edit b2"
           onClick={() => {
-           props.handleedit(props.index)
-       
-          }}
+           props.handleedit(props.index)}}
         >
           Edit
         </button>

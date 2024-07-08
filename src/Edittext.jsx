@@ -1,6 +1,14 @@
 import "./list.css";
+import { useState } from "react";
 
+ 
 function Edittext(props) {
+  const [edit, setedit] = useState(props.initial)
+  function setedittext(e){
+ setedit(e.target.value)
+
+
+   }
   return (
     <>
         <div
@@ -12,17 +20,17 @@ function Edittext(props) {
       <input
         type="text" 
         style={props.complete ? props. mystyle : {}}
-        value={props.initial}
+        value={edit}
         className="text"
         onChange={(e) => {
-          props.setedittext(e,props.index)
+          setedittext(e)
         }}
       />
       <div className="b1">
         <button
           className="edit b2"
-          onClick={() => props.handlesave(props.index)}>
-          save
+          onClick={() => props.handlesave(props.index,edit)}>
+          Save
         </button>
         <button
           className="delete b2"

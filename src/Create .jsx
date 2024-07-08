@@ -14,8 +14,11 @@ function Create() {
   const [initialtext, settext] = useState("");
   const [todos, settodos] = useState([]);
   const [edit, setedit] = useState("");
- function setedittext(e){
+ function setedittext(e,index){
   setedit(e.target.value)
+  const newtodo=[...todos]
+  newtodo[index]= e.target.value;
+  settodos(newtodo);
  }
   function handlestrike(e) {
     let id = e.target.name;
@@ -25,7 +28,7 @@ function Create() {
   }
 
   function handleaddtext() {
-    settodos([...todos, { initialtext, iscompleted: false, isedit: false ,edit }]);
+    settodos([...todos, { initialtext, iscompleted: false, isedit: false  }]);
     settext("");
   }
 
@@ -42,7 +45,7 @@ function Create() {
     let newtodos = [...todos];
     newtodos[index].isedit = !newtodos[index].isedit;
     settodos(newtodos);
-    console.log(isdit)
+
   };
 
   const handledelete = (index) => {
@@ -52,8 +55,9 @@ function Create() {
   };
   const handlesave=(index)=>{
      const newtodo=[...todos];
-     settodos(newtodo[index].value);
+   
   }
+  
 
   return (
     <>
@@ -98,7 +102,7 @@ function Create() {
                     isedit={item.isedit}
                     handlesave={handlesave}
                      setedittext={setedittext}
-                     edit={edit}
+                     edit={item.edit}
                   />
                 );
               })}

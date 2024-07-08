@@ -3,11 +3,7 @@ import reactLogo from "./assets/react.svg";
 
 import Create from "./Create ";
 
-
-
 function App() {
-
-
   return (
     <>
     

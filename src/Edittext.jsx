@@ -15,7 +15,7 @@ function Edittext(props) {
         value={props.initial}
         className="text"
         onChange={(e) => {
-          props.setedittext(e)
+          props.setedittext(e,props.index)
         }}
       />
       <div className="b1">

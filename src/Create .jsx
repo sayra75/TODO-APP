@@ -37,7 +37,7 @@ function Create() {
   const handleedit = (index) => {
    
     let newtodos = [...todos];
-    newtodos[index].isdit = !newtodos[index].isedit;
+    newtodos[index].isedit = !newtodos[index].isedit;
     settodos(newtodos);
     console.log(isdit)
   };

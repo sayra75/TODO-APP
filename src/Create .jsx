@@ -13,7 +13,10 @@ const mystylefor = {
 function Create() {
   const [initialtext, settext] = useState("");
   const [todos, settodos] = useState([]);
-
+  const [edit, setedit] = useState("");
+ function setedittext(e){
+  setedit(e.target.value)
+ }
   function handlestrike(e) {
     let id = e.target.name;
     let newtodos = [...todos];
@@ -22,7 +25,7 @@ function Create() {
   }
 
   function handleaddtext() {
-    settodos([...todos, { initialtext, iscompleted: false, isedit: false }]);
+    settodos([...todos, { initialtext, iscompleted: false, isedit: false ,edit }]);
     settext("");
   }
 
@@ -94,7 +97,8 @@ function Create() {
                     handleedit={handleedit}
                     isedit={item.isedit}
                     handlesave={handlesave}
-                    changetext={changetext}
+                     setedittext={setedittext}
+                     edit={edit}
                   />
                 );
               })}

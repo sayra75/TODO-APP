@@ -9,7 +9,9 @@ return  props.isedit ? (
     initial={props.initial}
      complete={props.complete}
      changetext={props.changetext}
-     mystyle={props.mystyle}/>
+     mystyle={props.mystyle}
+     seteditext={props.seteditext}
+     edit={props.edit}/>
   ) :
     (
   

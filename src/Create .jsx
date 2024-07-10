@@ -1,12 +1,13 @@
 import "./list.css";
+
 import { useState } from "react";
 import Todoslist from "./Todoslist.jsx";
 const mystyle = {
   textDecoration: " line-through",
 };
 const mystylefor = {
-  backgroundColor: "black",
-  opacity: "0.6",
+  backgroundColor: "#222831",
+
   color: "white",
 };
 
@@ -14,16 +15,14 @@ function Create() {
   const [initialtext, settext] = useState("");
   const [todos, settodos] = useState([]);
 
-
   function handlestrike(e) {
-    let id = e.target.name;
     let newtodos = [...todos];
-    newtodos[id].iscompleted = !newtodos[id].iscompleted;
+    newtodos[e].iscompleted = !newtodos[e].iscompleted;
     settodos(newtodos);
   }
 
   function handleaddtext() {
-    settodos([...todos, { initialtext, iscompleted: false, isedit: false  }]);
+    settodos([...todos, { initialtext, iscompleted: false, isedit: false }]);
     settext("");
   }
 
@@ -36,11 +35,9 @@ function Create() {
   }
 
   const handleedit = (index) => {
-   
     let newtodos = [...todos];
     newtodos[index].isedit = !newtodos[index].isedit;
     settodos(newtodos);
-
   };
 
   const handledelete = (index) => {
@@ -48,17 +45,13 @@ function Create() {
     newtodos.splice(index, 1);
     settodos(newtodos);
   };
-  const handlesave=(index,edit)=>{
-   
+  const handlesave = (index, edit) => {
     let newtodos = [...todos];
-    newtodos[index].initialtext=edit;
- newtodos[index].isedit = !newtodos[index].isedit;
+    newtodos[index].initialtext = edit;
+    newtodos[index].isedit = !newtodos[index].isedit;
 
     settodos(newtodos);
-
-   
-  }
-  
+  };
 
   return (
     <>
@@ -71,6 +64,7 @@ function Create() {
             value={initialtext}
             onChange={changetext}
           />
+
           <div className="button">
             <button
               id="entbutton"
@@ -85,12 +79,13 @@ function Create() {
             </button>
           </div>
         </div>
+
         <div>
           <div className="output">
             <div className="content">
               {todos.map((item, index) => {
                 return (
-                  <Todoslist 
+                  <Todoslist
                     handledelete={handledelete}
                     item={item}
                     index={index}
@@ -102,7 +97,6 @@ function Create() {
                     handleedit={handleedit}
                     isedit={item.isedit}
                     handlesave={handlesave}
-                    
                   />
                 );
               })}
